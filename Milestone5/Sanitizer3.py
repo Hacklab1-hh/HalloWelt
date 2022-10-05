@@ -15,8 +15,11 @@ teststring = """Hier folgt ein Codeabschnitt : \nif true:\n    print('wahr')\nel
 
 #############################################################################
 # Basisdefinition von Werten und Strings
-columns = "123456789012345678901234567890123456789012345678901234567890"
-columns2 = "000000000111111111122222222223333333333444444444455555555556"
+#columns = "123456789012345678901234567890123456789012345678901234567890"
+columns = 6*"1234567890"
+#columns2 = "000000000111111111122222222223333333333444444444455555555556"
+columns2 =9*"0"+10*"1"+10*"2"+10*"3"+10*"4"+10*"5"+"6"
+
 sonderzeichen = "%$§\"\`\'#/:;-"
 leerzeichen = " \t"
 zeilenumbruch = "\n\n\r"
@@ -44,14 +47,24 @@ sani4 = teststring
 # Sonderzeichen für Programmierung am Ende entfernen!
 # String 4 weiterverarbeiten
 print("es sind " + str(len (sonderzeichen)) + " erfasst und zu bereinigen")
-charx = sonderzeichen[0]
-countx = sani4.count(charx)
-out="Sonderzeichen " + charx + " ist  so oft vertreten :" + str(countx)
-print(out)
 
+startx = "Sonderzeichen"
+footerx = "ist so oft vertreten"
+delmitter = ":"
+
+# hier wird das erste sonderzeichen gezählt
+charx = sonderzeichen[0]                                   # laden des ersten sonderzeichens aus dem String
+countx = sani4.count(charx)                                # zählen des ersten sonderzeichens (vorkommen) im String
+countxstr = str(sani4.count(charx)).zfill(2).rjust(5," ")  # aufbereiten der Zahl als string
+#out="Sonderzeichen " + charx + " ist  so oft vertreten :" + str(countx)
+out= startx + charx + footerx + delmitter + countxstr      # zusammensetzen des Ausgabestrings
+print(out)                                                 # Ausgabe des fertigen Strings
+
+# hier wird das zweite sonderzeichen gezählt
 charx = sonderzeichen[1]
 countx = sani4.count(charx)
-out="Sonderzeichen " + charx + " ist  so oft vertreten :" + str(countx)
+countxstr = str(sani4.count(charx)).zfill(2).rjust(5," ")
+out= startx + charx + footerx + delmitter + countxstr
 print(out)
 
 charx = sonderzeichen[2]
